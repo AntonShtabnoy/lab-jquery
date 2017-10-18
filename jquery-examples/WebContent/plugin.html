@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Custom plugin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <style>
+            body {
+                width: 600px;
+                margin: 10px auto;
+            }
+            div {
+                padding: 10px 0px;
+            }
+        </style>
+        <script>
+            (function ($) {
+
+                $.fn.decorateFirstWord = function (params) {
+                    var css = $.extend({}, $.fn.decorateFirstWord.defaults, params);
+                    var elementText = this.text();
+                    var spaceIndex = elementText.indexOf(" ");
+                    var word = elementText.substring(0, spaceIndex);
+                    this.text(elementText.substring(spaceIndex));
+                    $("<span>").text(word).css(css).prependTo(this);
+                    return this;
+                };
+                
+                $.fn.decorateFirstWord.defaults = {color: 'red'};
+            })(jQuery);
+
+            $(function () {
+                var facts = $("p");
+                /*$(facts[0]).decorateFirstWord();
+                $(facts[1]).decorateFirstWord({color: 'green'});
+                $(facts[2]).decorateFirstWord({color: 'orange', 'font-weight': 'bolder'});
+                $(facts[3]).decorateFirstWord({color: 'blue', 'font-size': '40px', 'font-family': 'Geneva, Arial, Helvetica, sans-serif'});
+                $(facts[4]).decorateFirstWord({'background-color': 'silver'}).animate({opacity: 0.5, width: '300px'}, 5000);*/
+            });
+        </script>    
+    </head>
+    <body>
+        <h2>Интересные факты</h2>
+        <p>Англичане пьют чая больше, чем жители любой другой страны. Например, в двадцать раз больше, чем американцы.</p>
+        <p>В течение жизни человек проходит расстояние, равное 5 экваторам Земли.</p>
+        <p>Люди с голубыми глазами лучше видят в темноте.</p>
+        <p>В среднем дети смеются около 400 раз в день, взрослые смеются около 15 раз в день.</p>
+        <p>Приблизительно 365 миллионов человек в мире имеют компьютеры, а половина населения земного шара никогда не видели и не использовали телефон.</p>
+    </body>
+</html>

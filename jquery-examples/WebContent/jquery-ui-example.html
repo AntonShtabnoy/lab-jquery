@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery UI</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script>
+            $(function () {
+                $("input[name='bday']").datepicker();
+            });
+
+            $(function () {
+                $("#addUser").click(function () {
+                    $(".content").dialog({
+                        title: "Add User",
+                        width: "400px",
+                        modal: true,
+                        buttons: [
+                            {
+                                text: "OK",
+                                click: function () {
+                                    $(this).dialog("close");
+                                }
+                            }, {
+                                text: "Cancel",
+                                click: function () {
+                                    $(this).dialog("close");
+                                }
+                            }]
+                    });
+                });
+            });
+        </script>
+        <style>
+            .contentWrapper {
+                display: none;
+            }
+            .content {
+                padding: 10px;
+            }
+            label {
+                display: block;
+                width: 100px;
+                float: left;
+            }
+            
+            input, select {
+                width: 250px;
+                margin: 3px 0px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button id="addUser">Add User</button>
+        <div class="contentWrapper">
+            <div class="content">
+                <label for="fname">First name:</label>
+                <input type="text" name="fname"><br>
+
+                <label for="lname">Last name:</label>
+                <input type="text" name="lname"><br>
+
+                <label for="bday">Birthday:</label>
+                <input type="text" name="bday"><br>
+
+                <label for="gender">Gender:</label>
+                <select name="gender">
+                    <option></option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>    
+            </div>
+        </div>
+    </body>
+</html>

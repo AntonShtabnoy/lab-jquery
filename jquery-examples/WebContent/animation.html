@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Animation</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <style>
+            .left {
+                float: left;
+                padding: 3px 5px;
+            }
+            .content {
+                width: 600px;
+                margin: 10px auto;
+            }            
+        </style>
+        <script>
+            $(function(){
+                $(".hide").click(function(){
+                   $("img").hide(); 
+                });
+                $(".show").click(function(){
+                   $("img").show(); 
+                });
+                $(".fadeIn").click(function(){
+                   $("img").fadeIn(); 
+                });
+                $(".fadeOut").click(function(){
+                   $("img").fadeOut(); 
+                });
+                $(".slideUp").click(function(){
+                   $("img").slideUp(); 
+                });
+                $(".slideDown").click(function(){
+                   $("img").slideDown(); 
+                });
+                $(".animate").click(function(){
+                   $("img").animate({
+                       "opacity": 0.5,
+                       "width": "100px",
+                       "height": "215px"
+                   }); 
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            <article>
+                <h2>Animate</h2>
+                <p>
+                    <img src="http://risovach.ru/upload/2012/07/comics_Lomaj-menya-polnostyu_orig_1343015554.jpg" class="left" width="200"/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+                    lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+                    in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+                    euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+                    eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+                    at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+                    nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+                    tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+                    fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+                    lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+            </article>
+             <button class="hide">Hide</button>
+             <button class="show">Show</button>
+             <button class="fadeOut">Fade Out</button>
+             <button class="fadeIn">Fade In</button>
+             <button class="slideUp">Slide Up</button>
+             <button class="slideDown">Slide Down</button>
+             <button class="animate">Animate</button>
+        </div>
+    </body>
+</html>
+

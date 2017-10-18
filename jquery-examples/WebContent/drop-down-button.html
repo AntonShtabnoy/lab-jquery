@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drop down button plugin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <style>
+        	button {
+        		background-color: white; 
+			    border:1px rgb(96, 142, 181) solid;
+			    border-radius: 3px;
+			    color: rgb(96, 142, 181);
+			    font-size: 0.85rem;
+			    padding: 5px;
+			    font-weight: 700;
+        	}
+        
+           .dd-button-wrapper {
+			    float: left; 
+			    display: inline-block;
+			    margin: 2px 5px 0px 5px;
+			}
+			
+			.dd-button-wrapper button {
+			    margin: 0;
+			}
+			
+			.dd-button-options-wrapper {
+			    position:absolute; 
+			    margin: 0;
+			    z-index: 10; 
+			    background-color: white; 
+			    border:1px rgb(96, 142, 181) solid;
+			    border-radius: 3px;
+			    display:none;
+			}
+			
+			.dd-button-options {
+			    list-style: none;
+			    margin: 0;
+			    padding: 0;
+			}
+			
+			.dd-button-options li {
+			    cursor: pointer;
+			    color: rgb(96, 142, 181);
+			    font-size: 0.85rem;
+			    padding: 5px;
+			    font-weight: 700;
+			}
+			
+			.dd-button-options li:hover {
+			    color: white;
+			    background-color: rgb(96, 142, 181);
+			}
+        </style>
+        <script>
+	        (function($) {
+	            $.fn.dropDownButton = function(params) {
+	                var button = $(this);
+	                var wrapper = $("<div/>", {class: 'dd-button-wrapper'});
+	                button.wrap(wrapper);
+	                button.click(function(){
+	                    return false;
+	                });
+	                
+	                wrapper = button.parent();
+	                
+	                var optionsWrapper = $("<div/>", {class: 'dd-button-options-wrapper'});
+	                var options = $("<ul/>", {class: 'dd-button-options'});
+	                
+	                $.each(params.options, function(i, optionConfig) {
+	                    var option = $("<li/>", {text: optionConfig.label});
+	                    option.click(optionConfig.action);
+	                    options.append(option);            
+	                }); 
+	
+	                optionsWrapper.append(options);
+	                wrapper.append(optionsWrapper);
+	                
+	                wrapper.mouseenter(function() {
+                       optionsWrapper.show();
+	                });
+	                
+	                wrapper.mouseleave(function() {
+	                    optionsWrapper.hide();
+	                });
+	
+	                return button;
+	            };
+	        })(jQuery);
+
+			$(document).ready(function() {
+			    $("button").dropDownButton({
+			        options: [{
+			                label: 'With validation',
+			                action: function() {
+			                    alert('Saved with validation');
+			                }
+			            }, {
+			                label: 'Without validation',
+			                action: function() {
+			                    alert('Saved without validation');
+			                }
+			            }]
+			    });
+			});
+        </script>    
+    </head>
+    <body>
+        <div style="display:inline-block; width: 100%;">
+		    <button type="button">Save</button>
+		</div>
+    </body>
+</html>
